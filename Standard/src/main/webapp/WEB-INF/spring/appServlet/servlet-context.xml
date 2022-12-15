@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- 아래의 bean 설정을 통해서 bean 이 되기도 한다.  -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	<!-- 
+		com.gura.standard 페키지와 그 하위 페키지를 scan 을 해서
+		생성할 객체를 찾아서 직접 생성하고 그 생성된 객체의 참조값(bean) 을   container 에서 관리를 한다.
+		어떤 클래스로 객체를 생성을 할지 여부는 어노테이션을 보고 알수 있다
+		@Controller, @Service, @Repository, @Component 등등의 어노테이션이 붙은 클래스가 있으면
+		해당 클래스로 객체를 생성을해서 bean 을 conatiner 에서 관리 하는 구조이다.
+		관리란? 필요한 시점에 메소드를 호출하기도 하고 , 필요한 곳에 참조값을 직접 넣어주기도 한다. 
+	 -->
+	<context:component-scan base-package="com.gura.standard" />
+	
+	
+	
+</beans:beans>
+
+
+
+
+
+
+
+
+
+
+
+
