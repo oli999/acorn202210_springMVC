@@ -1,11 +1,46 @@
 package com.gura.spring01;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class TestController {
+	
+	@Autowired // spring bean container 에 RemoconService type 객체가 있으면 자동 주입된다. (DI)
+	private RemoconService service; // RemoconServiceImpl 객체의 참조값을 주입받을 필드 
+	
+	@ResponseBody
+	@RequestMapping("/di/up")
+	public String diUp() {
+		/*
+		 *  체널을 올리는 로직을 수행할때 필요한 객체는?
+		 *  DI 되어서 필드에 참조값이 있으므로 단순히 사용만 하면 된다. 
+		 */
+		
+		service.up();
+		
+		return "up ok!";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/di/down")
+	public String diDown() {
+		
+		service.down();
+		
+		return "down ok!";
+	}
+	
+	
+	@RequestMapping("/di/test")
+	public String diTest() {
+		
+		return "di/test";
+	}
+	
 	
 	@RequestMapping("/move/test")
 	public String test() {

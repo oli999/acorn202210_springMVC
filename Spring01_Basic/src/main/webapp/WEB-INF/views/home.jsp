@@ -13,6 +13,7 @@
 		<ul>
 			<li><a href="${pageContext.request.contextPath}/member/insertform">요청파라미터 추출 테스트</a></li>
 			<li><a href="${pageContext.request.contextPath}/move/test">이동 테스트</a></li>
+			<li><a href="di/test">Dependency Injection 테스트</a></li>
 		</ul>
 		
 		<h3>공지사항</h3>
