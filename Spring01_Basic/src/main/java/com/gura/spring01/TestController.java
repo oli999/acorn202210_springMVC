@@ -45,6 +45,39 @@ public class TestController {
 		//리턴해주기 
 		return mView;
 	}
+	
+	// ModelAndView 객체가 필요하다면 직접 생성하지 않고 메소드의 매개변수로 선언하면 자동으로 전달된다.
+	@RequestMapping("/move/fortune2")
+	public ModelAndView fortune2(ModelAndView mView) {
+		
+		//view page 에 전달할 모델(데이터) 라고 가정하자 
+		String fortuneToday="동쪽으로 가면 귀인을 만나요!";
+		
+		// HttpServletRequest 객체에 담는 대신  .addObject(key, value) 형태로 ModelAndView 객체에 담으면 된다.
+		mView.addObject("fortuneToday", fortuneToday);
+		//view page 의 위치를 담는다.
+		mView.setViewName("move/fortune");
+		
+		//리턴해주기 
+		return mView;
+	}
+	
+	// ModelAndView 객체가 필요하다면 직접 생성하지 않고 메소드의 매개변수로 선언하면 자동으로 전달된다.
+	@RequestMapping("/move/fortune3")
+	public ModelAndView fortune3() {
+		
+		//view page 의 정보를 객체를 생성할때 바로 전달할수도 있다. 
+		ModelAndView mView=new ModelAndView("move/fortune");
+		
+		//view page 에 전달할 모델(데이터) 라고 가정하자 
+		String fortuneToday="동쪽으로 가면 귀인을 만나요!";
+		
+		// HttpServletRequest 객체에 담는 대신  .addObject(key, value) 형태로 ModelAndView 객체에 담으면 된다.
+		mView.addObject("fortuneToday", fortuneToday);
+		
+		//리턴해주기 
+		return mView;
+	}
 }
 
 

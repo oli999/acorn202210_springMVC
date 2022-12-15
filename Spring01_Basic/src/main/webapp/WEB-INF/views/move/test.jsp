@@ -14,6 +14,8 @@
 		<ul>
 			<li><a href="update">리다일렉트 이동하기</a></li>
 			<li><a href="fortune">forward 이동하는 다른 방법</a></li>
+			<li><a href="fortune2">forward 이동하는 다른 방법2</a></li>
+			<li><a href="fortune3">forward 이동하는 다른 방법3</a></li>
 		</ul>
 	</div>
 </body>
