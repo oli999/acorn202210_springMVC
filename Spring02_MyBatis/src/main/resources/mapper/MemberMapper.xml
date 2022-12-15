@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<!-- 
+		여기서 resultType 은 select 된 row 를 어떤 객체에 담을지를 결정하는 것이다
+		dto 로 설정했다면
+		SELECT num, name, addr  의 칼럼명과
+		dto 의 필드명이 반드시 일치해야 정상 동작을 한다.
+	 -->
+	<select id="getList" resultType="com.gura.spring02.member.dto.MemberDto">
+		SELECT num, name, addr
+		FROM member
+		ORDER BY num ASC
+	</select>
+</mapper>
+
+
+
