@@ -17,6 +17,12 @@ public class MemberController {
 	@Autowired
 	private MemberDao dao;
 	
+	@RequestMapping("/member/update")
+	public String update(MemberDto dto) {
+		dao.update(dto);
+		return "member/update";
+	}
+	
 	@RequestMapping("/member/updateform")
 	public ModelAndView updateform(int num, ModelAndView mView) {//ModelAndView 객체도 받을수 있다.
 		//수정할 회원의 정보를 DB 에서 불러와서

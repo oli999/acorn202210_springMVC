@@ -27,8 +27,12 @@ public class MemberDaoImpl implements MemberDao{
 
 	@Override
 	public void update(MemberDto dto) {
-		// TODO Auto-generated method stub
-		
+		/*
+		 *  mapper's namespace => member
+		 *  sql's id => update
+		 *  parameterType => MemberDto 
+		 */
+		session.update("member.update", dto);
 	}
 
 	@Override
