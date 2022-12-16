@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 	
+	<select id="getData" parameterType="int" resultType="com.gura.spring02.member.dto.MemberDto">
+		SELECT num, name, addr
+		FROM member
+		WHERE num=#{num}
+	</select>
+	
 	<!-- 
 		paramterType 이  숫자나, 문자열이면 값이 하나 이기 때문에 
 		#{ 여기는 아무 문자열이나 넣어도 된다. }
