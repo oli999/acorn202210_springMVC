@@ -33,8 +33,12 @@ public class MemberDaoImpl implements MemberDao{
 
 	@Override
 	public void delete(int num) {
-		// TODO Auto-generated method stub
-		
+		/*
+		 *  mapper's namespace => member
+		 *  sql's id => delete
+		 *  parameterType => int 
+		 */
+		session.delete("member.delete", num);
 	}
 
 	@Override

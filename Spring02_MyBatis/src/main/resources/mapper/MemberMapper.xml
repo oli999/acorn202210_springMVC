@@ -3,6 +3,18 @@
 <mapper namespace="member">
 	
 	<!-- 
+		paramterType 이  숫자나, 문자열이면 값이 하나 이기 때문에 
+		#{ 여기는 아무 문자열이나 넣어도 된다. }
+		#{num}
+		#{gura}
+		#{xxx}
+	 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM member
+		WHERE num=#{num}
+	</delete>
+	
+	<!-- 
 		parameterType 이 dto 인 경우에 
 		값을 바인딩하는 방법은 #{ dto 의 필드명 }  과 같은 형식으로 바인딩 하면 된다.
 		#{ name }  은  dto 의 name 이라는 필드에 있는 값을 해당 위치에 바인딩 하라는 의미이다.
