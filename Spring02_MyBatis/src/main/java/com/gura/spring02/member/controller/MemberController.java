@@ -17,6 +17,18 @@ public class MemberController {
 	@Autowired
 	private MemberDao dao;
 	
+	@RequestMapping("/member/insert")
+	public String insert(MemberDto dto) {//폼전송되는 name, addr 이 자동으로 추출되어서 MemberDto 에 담겨서 전달된다.
+		dao.insert(dto);
+		return "member/insert";
+	}
+	
+	@RequestMapping("/member/insertform")
+	public String insertform() {
+		// /WEB-INF/views/member/insertform.jsp 로 forward 이동해서 응답
+		return "member/insertform";
+	}
+	
 	@RequestMapping("/member/list")
 	public ModelAndView getList(ModelAndView mView) {
 		//주입받은 MemberDao 객체를 이용해서 회원 목록을 얻어온다.

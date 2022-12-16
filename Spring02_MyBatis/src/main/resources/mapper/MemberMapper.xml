@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
+	
+	<!-- 
+		parameterType 이 dto 인 경우에 
+		값을 바인딩하는 방법은 #{ dto 의 필드명 }  과 같은 형식으로 바인딩 하면 된다.
+		#{ name }  은  dto 의 name 이라는 필드에 있는 값을 해당 위치에 바인딩 하라는 의미이다.
+		#{ addr }  은  dto 의 addr 이라는 필드에 있는 값을 해당 위치에 바인딩 하라는 의미이다.
+		즉 필드명과 일치 시켜야 동작을 한다
+		#{ } 기호는 MyBatis 가 해석하는 특별한 기호이다.
+	 -->
+	<insert id="insert" parameterType="com.gura.spring02.member.dto.MemberDto">
+		INSERT INTO member
+		(num, name, addr)
+		VALUES(member_seq.NEXTVAL, #{name}, #{addr})
+	</insert>
+
 	<!-- 
 		여기서 resultType 은 select 된 row 를 어떤 객체에 담을지를 결정하는 것이다
 		dto 로 설정했다면
