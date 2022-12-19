@@ -40,6 +40,11 @@
 			<exclude-mapping path="/users/login"/>
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
+		<!-- 또다른 경로에 대해서 맵핑하고 싶다면 interceptor 설정을 하나 추가 한다. -->
+		<interceptor>
+			<mapping path="/file/*"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
 	</interceptors>
 	
 	<!-- 
