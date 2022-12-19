@@ -16,7 +16,9 @@
 			<li><a href="users/logout">로그아웃</a></li>
 			<li><a href="users/info">개인정보(로그인 필요)</a></li>
 			<li><a href="file/insertform">파일 업로드 테스트</a></li>
+			<li><a href="cafe/insertform">SmartEditor 테스트</a></li>
 		</ul>
+		<img src="${pageContext.request.contextPath}/images/kim1.png"/>
 		<h3>공지사항</h3>
 		<ul>
 			<c:forEach var="tmp" items="${noticeList }">

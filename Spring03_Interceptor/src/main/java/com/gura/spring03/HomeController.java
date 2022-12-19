@@ -15,6 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 	
+	@RequestMapping("/cafe/insertform")
+	public String insertform() {
+		
+		return "cafe/insertform";
+	}
+	
+	
 	@RequestMapping("/play")
 	public String play() {
 		return "play";
