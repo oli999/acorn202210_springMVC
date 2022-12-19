@@ -6,5 +6,6 @@
 	<!-- sql 문을 작성한 Mapper xml 문서가 어디에 있는지 목록을 작성해야 한다. -->
 	<mappers>
 		<mapper resource="mapper/MemberMapper.xml"/>
+		<mapper resource="mapper/TodoMapper.xml"/>
 	</mappers>
 </configuration>
