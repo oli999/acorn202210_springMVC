@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- sql 문을 작성한 Mapper xml 문서가 어디에 있는지 목록을 작성해야 한다. -->
+	<mappers>
+		<mapper resource="mapper/UsersMapper.xml"/>
+	</mappers>
+</configuration>
