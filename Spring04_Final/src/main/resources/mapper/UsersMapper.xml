@@ -16,9 +16,21 @@
 		SET pwd=#{newPwd}
 		WHERE id=#{id}
 	</update>
+	<!-- 
+		int, long, float, double, String type 에 대응되는 
+		
+		jdbcType 종류 
+		
+		INTEGER, BIGINT, FLOAT, DOUBLE, VARCHAR
+	 -->
 	<update id="update" parameterType="com.gura.spring04.users.dto.UsersDto">
 		UPDATE users
-		SET email=#{email }, profile=#{profile }
+		SET email=#{email }, profile=#{profile, jdbcType=VARCHAR}
+		WHERE id=#{id }
+	</update>
+	<update id="update2" parameterType="com.gura.spring04.users.dto.UsersDto">
+		UPDATE users
+		SET email=#{email } <if test="profile != null">, profile=#{profile }</if>
 		WHERE id=#{id }
 	</update>
 	<delete id="delete" parameterType="string">
@@ -26,6 +38,12 @@
 		WHERE id=#{id}
 	</delete>	
 </mapper>
+
+
+
+
+
+
 
 
 
