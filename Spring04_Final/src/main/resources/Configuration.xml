@@ -3,6 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<!-- 자주 사용하는 type 의 별칭을 등록 해 놓고  Mapper xml 에서 사용할수 있다. -->
+	<typeAliases>
+		<typeAlias type="com.gura.spring04.users.dto.UsersDto" alias="usersDto"/>
+	</typeAliases>
+	
 	<!-- sql 문을 작성한 Mapper xml 문서가 어디에 있는지 목록을 작성해야 한다. -->
 	<mappers>
 		<mapper resource="mapper/UsersMapper.xml"/>
