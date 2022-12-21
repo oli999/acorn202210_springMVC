@@ -29,6 +29,7 @@
 			<li><a href="get_user">회원 한명 정보</a></li>
 			<li><a href="get_friends">친구목록</a></li>
 			<li><a href="get_users">회원 목록</a></li>
+			<li><a href="file/list">자료실 목록보기</a></li>
 		</ul>
 		<h3>공지 사항 입니다</h3>
 		<ul>
