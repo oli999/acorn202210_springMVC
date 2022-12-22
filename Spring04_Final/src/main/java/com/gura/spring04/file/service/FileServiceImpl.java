@@ -120,8 +120,26 @@ public class FileServiceImpl implements FileService{
 
 	@Override
 	public void deleteFile(int num, HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		
+		//삭제할 파일의 정보 얻어오기
+		FileDto dto=dao.getData(num);
+		//파일 시스템에서 삭제
+		String saveFileName=dto.getSaveFileName();
+		String path=request.getServletContext().getRealPath("/resources/upload")+
+				File.separator+saveFileName;
+		new File(path).delete();
+		//DB 에서 파일 정보 삭제
+		dao.delete(num);
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
