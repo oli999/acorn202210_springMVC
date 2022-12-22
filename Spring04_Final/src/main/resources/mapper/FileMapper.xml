@@ -34,7 +34,7 @@
 						WHERE title LIKE '%'||#{title}||'%'
 					</when>
 					<when test="writer != null">
-						WHERE writer LIKE '%'||#{writer}||'%'
+						WHERE writer LIKE '%${writer}%'
 					</when>
 				</choose>
 				
