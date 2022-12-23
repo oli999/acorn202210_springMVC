@@ -168,8 +168,13 @@ public class CafeServiceImpl implements CafeService{
 
 	@Override
 	public void deleteContent(int num, HttpServletRequest request) {
-		// TODO Auto-generated method stub
+		//세션에서 로그인된 아이디를 읽어와서 
 		
+		//글 작성자와 로그인된 아이디가 다르다면 
+		
+		//예외를 발생시켜서 삭제가 안되도록 한다. 
+		
+		cafeDao.delete(num);
 	}
 
 	@Override
@@ -179,3 +184,9 @@ public class CafeServiceImpl implements CafeService{
 	}
 
 }
+
+
+
+
+
+

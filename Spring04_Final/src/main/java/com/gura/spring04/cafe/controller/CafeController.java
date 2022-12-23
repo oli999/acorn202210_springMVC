@@ -45,6 +45,11 @@ public class CafeController {
 		return "cafe/detail";
 	}
 	
+	@RequestMapping("/cafe/delete")
+	public String delete(int num, HttpServletRequest request) {
+		service.deleteContent(num, request);
+		return "redirect:/cafe/list";
+	}
 }
 
 
