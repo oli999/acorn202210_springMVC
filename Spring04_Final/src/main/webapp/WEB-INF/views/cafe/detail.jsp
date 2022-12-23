@@ -9,6 +9,24 @@
 </head>
 <body>
 	<div class="container">
+		
+		<%-- 만일 이전글(더 옛날글)의 글번호가 0 가 아니라면(이전글이 존재 한다면) --%>
+		<c:if test="${dto.prevNum ne 0}">
+			<a href="detail?num=${dto.prevNum }&condition=${condition}&keyword=${encodedK}">이전글</a>
+		</c:if>
+		
+		<%-- 만일 다음글(더 최신글)의 글번호가 0 가 아니라면(다음글이 존재 한다면) --%>
+		<c:if test="${dto.nextNum ne 0 }">
+			<a href="detail?num=${dto.nextNum }&condition=${condition}&keyword=${encodedK}">다음글</a>
+		</c:if>
+		
+		<%-- 만일 검색 키워드가 있다면 --%>
+		<c:if test="${not empty keyword }">
+			<p>
+				<strong>${condition }</strong> 조건 
+				<strong>${keyword }</strong> 검색어로 검색된 내용 자세히 보기
+			</p>
+		</c:if>
 		<h3>글 상세 보기</h3>
 		<table>
 			<tr>
