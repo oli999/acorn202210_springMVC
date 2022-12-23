@@ -162,8 +162,7 @@ public class CafeServiceImpl implements CafeService{
 
 	@Override
 	public void updateContent(CafeDto dto) {
-		// TODO Auto-generated method stub
-		
+		cafeDao.update(dto);
 	}
 
 	@Override
@@ -179,11 +178,26 @@ public class CafeServiceImpl implements CafeService{
 
 	@Override
 	public void getData(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		
+		//수정할 글번호
+		int num=Integer.parseInt(request.getParameter("num"));
+		//수정할 글의 정보 얻어와서 
+		CafeDto dto=cafeDao.getData(num);
+		//request 에 담아준다.
+		request.setAttribute("dto", dto);
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

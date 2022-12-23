@@ -50,7 +50,29 @@ public class CafeController {
 		service.deleteContent(num, request);
 		return "redirect:/cafe/list";
 	}
+	
+	@RequestMapping("/cafe/updateform")
+	public String updateForm(HttpServletRequest request) {
+		service.getData(request);
+		return "cafe/updateform";
+	}
+	
+	@RequestMapping("/cafe/update")
+	public String update(CafeDto dto) {
+		service.updateContent(dto);
+		return "cafe/update";
+	}
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

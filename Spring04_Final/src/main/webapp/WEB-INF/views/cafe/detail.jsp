@@ -39,7 +39,7 @@
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td>${dto.content }</td>
+				<td>${dto.title }</td>
 			</tr>
 			<tr>
 				<th>조회수</th>
