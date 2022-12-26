@@ -201,7 +201,7 @@
 											<pre id="pre${tmp.num }">${tmp.content }</pre>						
 										</dd>
 									</dl>
-									<form id="reForm${tmp.num }" class="animate__animated comment-form re-insert-form" action="comment_insert.do" method="post">
+									<form id="reForm${tmp.num }" class="animate__animated comment-form re-insert-form" action="comment_insert" method="post">
 										<input type="hidden" name="ref_group" value="${dto.num }"/>
 										<input type="hidden" name="target_id" value="${tmp.writer }"/>
 										<input type="hidden" name="comment_group" value="${tmp.comment_group }"/>
@@ -209,7 +209,7 @@
 										<button type="submit">등록</button>
 									</form>
 								<c:if test="${tmp.writer eq id }">
-									<form id="updateForm${tmp.num }" class="comment-form update-form" action="comment_update.do" method="post">
+									<form id="updateForm${tmp.num }" class="comment-form update-form" action="comment_update" method="post">
 										<input type="hidden" name="num" value="${tmp.num }" />
 										<textarea name="content">${tmp.content }</textarea>
 										<button type="submit">수정</button>
@@ -229,7 +229,7 @@
 		</div>
 	
 		<!-- 원글에 댓글을 작성할 폼 -->
-		<form class="comment-form insert-form" action="comment_insert.do" method="post">
+		<form class="comment-form insert-form" action="comment_insert" method="post">
 			<!-- 원글의 글번호가 댓글의 ref_group 번호가 된다. -->
 			<input type="hidden" name="ref_group" value="${dto.num }"/>
 			<!-- 원글의 작성자가 댓글의 대상자가 된다. -->
@@ -255,7 +255,7 @@
 					e.preventDefault();
 					//로그인 폼으로 이동 시킨다.
 					location.href=
-						"${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/cafe/detail.do?num=${dto.num}";
+						"${pageContext.request.contextPath}/users/loginform?url=${pageContext.request.contextPath}/cafe/detail?num=${dto.num}";
 				}
 			});
 		
@@ -304,7 +304,7 @@
 					해당 페이지의 내용을 ajax 요청을 통해서 받아온다.
 					"pageNum=xxx&num=xxx" 형식으로 GET 방식 파라미터를 전달한다. 
 				*/
-				ajaxPromise("ajax_comment_list.do","get",
+				ajaxPromise("ajax_comment_list","get",
 						"pageNum="+currentPage+"&num=${dto.num}")
 				.then(function(response){
 					//json 이 아닌 html 문자열을 응답받았기 때문에  return response.text() 해준다.
@@ -355,7 +355,7 @@
 					const isDelete=confirm("댓글을 삭제 하시겠습니까?");
 					if(isDelete){
 						// gura_util.js 에 있는 함수들 이용해서 ajax 요청
-						ajaxPromise("comment_delete.do", "post", "num="+num)
+						ajaxPromise("comment_delete", "post", "num="+num)
 						.then(function(response){
 							return response.json();
 						})
@@ -381,7 +381,7 @@
 						const isMove=confirm("로그인이 필요 합니다. 로그인 페이지로 이동 하시겠습니까?");
 						if(isMove){
 							location.href=
-								"${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/cafe/detail.do?num=${dto.num}";
+								"${pageContext.request.contextPath}/users/loginform?url=${pageContext.request.contextPath}/cafe/detail?num=${dto.num}";
 						}
 						return;
 					}
