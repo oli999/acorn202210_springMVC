@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gura.spring04.exception.NotDeleteException;
 import com.gura.spring04.file.dao.FileDao;
 import com.gura.spring04.file.dto.FileDto;
 
@@ -159,8 +160,17 @@ public class FileServiceImpl implements FileService{
 
 	@Override
 	public void deleteFile(int num, HttpServletRequest request) {
+		
 		//삭제할 파일의 정보 얻어오기
 		FileDto dto=dao.getData(num);
+		
+		//글 작성자와 로그인된 아이디가 일치하는지 확인해서 일치하면 삭제하고, 일치하지 않으면 예외를 발생시키기 
+		String id=(String)request.getSession().getAttribute("id");
+		if(!dto.getWriter().equals(id)) {
+			//예외를 발생시키면 해당예외를 처리하는 곳으로 실행의 흐름이 넘어간다. 
+			throw new NotDeleteException("남의 파일 지우기 없기!");
+		}
+		
 		//파일 시스템에서 삭제
 		String saveFileName=dto.getSaveFileName();
 		String path=request.getServletContext().getRealPath("/resources/upload")+
