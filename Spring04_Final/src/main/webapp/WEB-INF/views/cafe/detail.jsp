@@ -157,6 +157,18 @@
 				}
 			</script>
 		</c:if>
+		<h4>댓글을 입력해 주세요</h4>
+		<!-- 원글에 댓글을 작성할 폼 -->
+		<form class="comment-form insert-form" action="comment_insert" method="post">
+			<!-- 원글의 글번호가 댓글의 ref_group 번호가 된다. -->
+			<input type="hidden" name="ref_group" value="${dto.num }"/>
+			<!-- 원글의 작성자가 댓글의 대상자가 된다. -->
+			<input type="hidden" name="target_id" value="${dto.writer }"/>
+	
+			<textarea name="content">${empty id ? '댓글 작성을 위해 로그인이 필요 합니다.' : '' }</textarea>
+			<button type="submit">등록</button>
+		</form>
+		
 		<!-- 댓글 목록 -->
 		<div class="comments">
 			<ul>
@@ -228,17 +240,6 @@
 			</svg>
 		</div>
 	
-		<!-- 원글에 댓글을 작성할 폼 -->
-		<form class="comment-form insert-form" action="comment_insert" method="post">
-			<!-- 원글의 글번호가 댓글의 ref_group 번호가 된다. -->
-			<input type="hidden" name="ref_group" value="${dto.num }"/>
-			<!-- 원글의 작성자가 댓글의 대상자가 된다. -->
-			<input type="hidden" name="target_id" value="${dto.writer }"/>
-	
-			<textarea name="content">${empty id ? '댓글 작성을 위해 로그인이 필요 합니다.' : '' }</textarea>
-			<button type="submit">등록</button>
-		</form>
-		
 	</div>
 	
 	<script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
