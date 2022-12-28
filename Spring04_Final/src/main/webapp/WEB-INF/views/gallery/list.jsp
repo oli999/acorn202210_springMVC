@@ -38,7 +38,7 @@
 	   		fill - 부모의 크기에 딱 맞게, 비율 관계 없이 맞춘다.(이미지가 일그러질 수 있다.)
 	   		scale-down - 가로, 세로 중에 큰 것을 부모의 크기에 맞춘 상태까지만 커지거나 작아지고, 비율은 일정하다.
 	   	*/
-		object-fit: contain;	
+		object-fit: cover;	
    	}
 </style>
 </head>

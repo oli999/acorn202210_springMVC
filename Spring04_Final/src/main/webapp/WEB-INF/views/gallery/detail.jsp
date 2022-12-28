@@ -16,7 +16,7 @@
             <a href="${pageContext.request.contextPath }/">Home</a>
          </li>
          <li class="breadcrumb-item">
-            <a href="${pageContext.request.contextPath }/gallery/list.do">겔러리 목록</a>
+            <a href="${pageContext.request.contextPath }/gallery/list">겔러리 목록</a>
          </li>
          <li class="breadcrumb-item active">상세보기</li>
       </ul>
@@ -34,7 +34,7 @@
          <c:choose>
          	<c:when test="${dto.prevNum ne 0 }">
          		<li class="page-item mr-3">
-               		<a class="page-link" href="${pageContext.request.contextPath}/gallery/detail.do?num=${dto.prevNum}">&larr; Prev</a>
+               		<a class="page-link" href="${pageContext.request.contextPath}/gallery/detail?num=${dto.prevNum}">&larr; Prev</a>
             	</li>
          	</c:when>
          	<c:otherwise>
@@ -46,7 +46,7 @@
          <c:choose>
          	<c:when test="${dto.nextNum ne 0 }">
          		<li class="page-item">
-               		<a class="page-link" href="${pageContext.request.contextPath}/gallery/detail.do?num=${dto.nextNum}">Next &rarr;</a>
+               		<a class="page-link" href="${pageContext.request.contextPath}/gallery/detail?num=${dto.nextNum}">Next &rarr;</a>
             	</li>
          	</c:when>
          	<c:otherwise>
