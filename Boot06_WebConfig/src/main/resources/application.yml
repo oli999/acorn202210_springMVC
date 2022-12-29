@@ -1,0 +1,19 @@
+
+#server.port=9000
+#server.servlet.context-path=/boot06
+#위의 server.port=9000 와 server.servlet.context-path=/boot06 은 아래의 yml 설정과 같다.
+server:
+  port: 9000
+  servlet:
+    context-path: /boot06
+
+#spring.mvc.view.prefix=/WEB-INF/views/
+#spring.mvc.view.suffix=.jsp
+#위의 설정을 바꾸면 아래와 같다
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+
