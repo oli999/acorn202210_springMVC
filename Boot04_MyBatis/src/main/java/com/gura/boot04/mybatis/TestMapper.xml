@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+	<!-- 
+		이 apper xml 을 사용하려면 경로가
+		classpath: com/gura/boot04/mybatis/TestMapper.xml  
+		이 된다.
+	 -->
+</mapper>
