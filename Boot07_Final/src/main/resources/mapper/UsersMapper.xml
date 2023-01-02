@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="users">
+	<insert id="insert" parameterType="com.gura.boot07.users.dto.UsersDto">
+		INSERT INTO users
+		(id, pwd, email, regdate)
+		VALUES( #{id}, #{pwd}, #{email}, SYSDATE)
+	</insert>
+	<select id="getData" parameterType="string" resultType="com.gura.boot07.users.dto.UsersDto">
+		SELECT id, pwd, profile, email, regdate
+		FROM users
+		WHERE id=#{id}
+	</select>
+	<update id="updatePwd" parameterType="com.gura.boot07.users.dto.UsersDto">
+		UPDATE users
+		SET pwd=#{newPwd}
+		WHERE id=#{id}
+	</update>
+	<!-- 
+		int, long, float, double, String type 에 대응되는 
+		
+		jdbcType 종류 
+		
+		INTEGER, BIGINT, FLOAT, DOUBLE, VARCHAR
+	 -->
+	<update id="update" parameterType="com.gura.boot07.users.dto.UsersDto">
+		UPDATE users
+		SET email=#{email }, profile=#{profile, jdbcType=VARCHAR}
+		WHERE id=#{id }
+	</update>
+	<update id="update2" parameterType="com.gura.boot07.users.dto.UsersDto">
+		UPDATE users
+		SET email=#{email } <if test="profile != null">, profile=#{profile }</if>
+		WHERE id=#{id }
+	</update>
+	<delete id="delete" parameterType="string">
+		DELETE FROM users
+		WHERE id=#{id}
+	</delete>	
+</mapper>
+
+
+
+
+
+
+
+
+
