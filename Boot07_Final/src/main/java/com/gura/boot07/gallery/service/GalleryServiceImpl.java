@@ -84,8 +84,8 @@ public class GalleryServiceImpl implements GalleryService {
 		//파일 크기 -> 다운로드가 없으므로, 여기서는 필요 없다.
 		long fileSize = image.getSize();
 		
-		// webapp/upload 폴더 까지의 실제 경로(서버의 파일 시스템 상에서의 경로)
-		String realPath = request.getServletContext().getRealPath("/resources/upload");
+		// 파일을 저장할 서버에서의 절대 경로 
+		String realPath = "C:\\data";
 		//db 에 저장할 저장할 파일의 상세 경로
 		String filePath = realPath + File.separator;
 		//디렉토리를 만들 파일 객체 생성
@@ -112,8 +112,8 @@ public class GalleryServiceImpl implements GalleryService {
 		String id = (String)request.getSession().getAttribute("id");
 		dto.setWriter(id);
 		//gallery 는 사진 다운 기능이 없다. -> orgFileName, saveFileName, fileSize 저장할 필요X
-		//imagePath 만 저장해주면 됨
-		dto.setImagePath("/resources/upload/" + saveFileName);
+		//저장된 파일명만 저장한다
+		dto.setImagePath(saveFileName);
 		
 		//GalleryDao 를 이용해서 DB 에 저장하기
 		dao.insert(dto);
