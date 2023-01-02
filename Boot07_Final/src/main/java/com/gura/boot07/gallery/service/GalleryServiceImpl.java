@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,6 +22,9 @@ import com.gura.boot07.gallery.dto.GalleryDto;
 public class GalleryServiceImpl implements GalleryService {
 	@Autowired
 	private GalleryDao dao;
+	
+	@Value("${file.location}")
+	private String fileLocation;
 	
 	//갤러리 이미지 list
 	public void getList(HttpServletRequest request) {
@@ -85,7 +89,7 @@ public class GalleryServiceImpl implements GalleryService {
 		long fileSize = image.getSize();
 		
 		// 파일을 저장할 서버에서의 절대 경로 
-		String realPath = "C:\\data";
+		String realPath = fileLocation;
 		//db 에 저장할 저장할 파일의 상세 경로
 		String filePath = realPath + File.separator;
 		//디렉토리를 만들 파일 객체 생성
