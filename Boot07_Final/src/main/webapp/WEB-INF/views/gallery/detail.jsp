@@ -22,7 +22,7 @@
       </ul>
    </nav>
    <div class="card mb-3">
-      <img class="card-img-top" src="${pageContext.request.contextPath}${dto.imagePath}"/>
+      <img class="card-img-top" src="${pageContext.request.contextPath}/gallery/images/${dto.imagePath}"/>
       <div class="card-body">
          <p class="card-text">${dto.caption}</p>
          <p class="card-text">by <strong>${dto.writer}</strong></p>
