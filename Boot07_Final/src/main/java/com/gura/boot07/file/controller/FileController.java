@@ -68,11 +68,10 @@ public class FileController {
 		HttpHeaders headers=new HttpHeaders();
 		//파일을 다운로드 시켜 주겠다는 정보
 		headers.add(HttpHeaders.CONTENT_TYPE, "application/octet-stream"); 
-		//파일의 크기 정보
-		headers.add(HttpHeaders.CONTENT_LENGTH, Long.toString(dto.getFileSize()));
 		//파일의 이름 정보(웹브라우저가 해당정보를 이용해서 파일을 만들어 준다)
 		headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename="+encodedName);	
-		
+		//파일의 크기 정보
+		headers.setContentLength(dto.getFileSize());
 		//읽어들일 파일의 경로 구성 
 		String path=fileLocation + File.separator + dto.getSaveFileName();
 		//파일에서 읽어들일 스트림 객체
