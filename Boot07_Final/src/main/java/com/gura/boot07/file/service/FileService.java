@@ -13,7 +13,7 @@ public interface FileService {
 	public void saveFile(FileDto dto, ModelAndView mView,
 			HttpServletRequest request);
 	//파일하나의 정보 얻어오기 
-	public void getFileData(int num, ModelAndView mView);
+	public FileDto getFileData(int num);
 	//파일 삭제하기
 	public void deleteFile(int num, HttpServletRequest request);
 }
