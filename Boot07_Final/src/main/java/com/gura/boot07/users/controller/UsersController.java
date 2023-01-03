@@ -34,28 +34,6 @@ public class UsersController {
 	@Autowired
 	private UsersService service;
 	
-	@Value("${file.location}")
-	private String fileLocation;
-	
-	//프로필 이미지 요청에 대한 응답을 할 메소드를 따로 만들어야 한다.
-	//이미지 데이터가 응답된어야 한다
-	//웹브라우저에게 이미지 데이터를 응답한다고 알려야 한다.
-	//응답할 이미지의 이름은 그때 그때 다르다.
-	@GetMapping(
-		value="/users/profile/{imageName}",
-		produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE, MediaType.IMAGE_GIF_VALUE}
-	)
-	@ResponseBody
-	public byte[] profileImage(@PathVariable("imageName") String imageName) throws IOException {
-		
-		String absolutePath=fileLocation+File.separator+imageName;
-		//파일에서 읽어들일 InputStream
-		InputStream is=new FileInputStream(absolutePath);
-	
-		return IOUtils.toByteArray(is);
-	}
-	
-	
 	/*
 	 *  GET 방식 /users/signup_form 요청을 처리할 메소드 
 	 *  - 요청방식이 다르면 실행되지 않는다. 
