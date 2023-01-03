@@ -40,10 +40,10 @@
 				return response.json();
 			})
 			.then(function(data){
-				//data : {imagePath:"/upload/xxx.jpg"} 형식의 obj
+				//data : {imagePath:"xxx.jpg"} 형식의 obj
 				console.log(data);
 				//이미지 경로에 context Path 추가하기
-				const path = "${pageContext.request.contextPath}" + data.imagePath;
+				const path = "${pageContext.request.contextPath}/gallery/images/" + data.imagePath;
 				//img 태그에 경로 추가
 				document.querySelector(".img-wrapper img").setAttribute("src", path);
 				//위의 form 의 input hidden 요소에 value 로 넣어서 db 에 저장

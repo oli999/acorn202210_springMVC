@@ -104,7 +104,7 @@ public class GalleryController {
 		//form 에서 dto 로 데이터 받아옴
 		//dto : MultipartFile image 를 가지고 있다.
 		//request : imagePath 만드는데 사용, session 영역의 id 가져오는데 사용
-		//return : { "imagePath" : "/upload/123456img_name.png" } 형식의 JSON 응답
+		//return : { "imagePath" : "123456img_name.png" } 형식의 JSON 응답
 		return service.uploadAjaxImage(dto, request);
 	}
 	

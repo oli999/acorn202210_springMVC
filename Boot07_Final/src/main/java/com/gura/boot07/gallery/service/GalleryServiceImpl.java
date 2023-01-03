@@ -132,8 +132,8 @@ public class GalleryServiceImpl implements GalleryService {
 		//파일 크기
 		long fileSize = image.getSize();
 		
-		// webapp/upload 폴더 까지의 실제 경로(서버의 파일 시스템 상에서의 경로)
-		String realPath = request.getServletContext().getRealPath("/resources/upload");
+		// 파일을 저장할 서버에서의 절대 경로 
+		String realPath = fileLocation;
 		//db 에 저장할 저장할 파일의 상세 경로
 		String filePath = realPath + File.separator;
 		//디렉토리를 만들 파일 객체 생성
@@ -152,8 +152,8 @@ public class GalleryServiceImpl implements GalleryService {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-
-		String imagePath = "/resources/upload/" + saveFileName;
+		
+		String imagePath =  saveFileName;
 		
 		//ajax upload 를 위한 imagePath return
 		Map<String, Object> map = new HashMap<String, Object>();
