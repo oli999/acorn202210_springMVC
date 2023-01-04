@@ -4,7 +4,9 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +49,7 @@ public class UsersServiceImpl implements UsersService{
 	}
 	//로그인 처리를 하는 메소드
 	@Override
-	public void loginProcess(UsersDto dto, HttpSession session) {
+	public void loginProcess(UsersDto dto, HttpSession session, HttpServletResponse response) {
 		//입력한 정보가 맞는지 여부
 		boolean isValid=false;
 		//아이디를 이용해서 회원 정보를 얻어온다.
@@ -61,7 +63,28 @@ public class UsersServiceImpl implements UsersService{
 		//만일 유효한 정보이면 
 		if(isValid) {
 			//로그인 처리를 한다.
-			session.setAttribute("id", resultDto.getId());
+			session.setAttribute("id", resultDto.getId());			
+		}
+		//로그인 정보를 저장하기로 했는지 확인해서 저장 하기로 했다면 쿠키로 응답한다.
+		String isSave=dto.getIsSave();
+		if(isSave == null){//체크 박스를 체크 안했다면
+			//저장된 쿠키 삭제 
+			Cookie idCook=new Cookie("savedId", dto.getId());
+			idCook.setMaxAge(0);//삭제하기 위해 0 으로 설정 
+			response.addCookie(idCook);
+			
+			Cookie pwdCook=new Cookie("savedPwd", dto.getNewPwd());
+			pwdCook.setMaxAge(0);
+			response.addCookie(pwdCook);
+		}else{//체크 박스를 체크 했다면 
+			//아이디와 비밀번호를 쿠키에 저장
+			Cookie idCook=new Cookie("savedId", dto.getId());
+			idCook.setMaxAge(60*60*24);//하루동안 유지
+			response.addCookie(idCook);
+			
+			Cookie pwdCook=new Cookie("savedPwd", dto.getPwd());
+			pwdCook.setMaxAge(60*60*24);
+			response.addCookie(pwdCook);
 		}
 	}
 
