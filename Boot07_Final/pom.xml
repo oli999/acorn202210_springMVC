@@ -12,6 +12,8 @@
 	<artifactId>Boot07_Final</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Boot07_Final</name>
+	<!-- war 파일로 빌드 하기위한 설정 -->
+	<packaging>war</packaging>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
@@ -58,6 +60,12 @@
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-web</artifactId>
 		    <version>4.0.0.RELEASE</version>
+		</dependency>
+		<!-- 외부 tomcat 으로 실행하기 위한 dependency -->
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+      		<artifactId>spring-boot-starter-tomcat</artifactId>
+      		<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
