@@ -28,7 +28,7 @@
    		</div>
 	</div>
 	
-	<script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
+	<script src="${pageContext.request.contextPath}/js/gura_util.js"></script>
 	<script>
 		//이미지를 선택했을 때, 실행할 함수 등록
 		document.querySelector("#image").addEventListener("change", function(){

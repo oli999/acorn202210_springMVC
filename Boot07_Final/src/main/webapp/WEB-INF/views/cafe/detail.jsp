@@ -242,7 +242,7 @@
 	
 	</div>
 	
-	<script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
+	<script src="${pageContext.request.contextPath}/js/gura_util.js"></script>
 	<script>
 		
 		//클라이언트가 로그인 했는지 여부
