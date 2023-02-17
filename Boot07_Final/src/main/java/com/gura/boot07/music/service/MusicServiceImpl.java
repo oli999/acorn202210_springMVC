@@ -65,9 +65,19 @@ public class MusicServiceImpl implements MusicService{
 			Tag tag=mp3.getTag();
 			//제목
 			String title=tag.getFirst(FieldKey.TITLE);
+			
+			//만일 제목 정보가 없으면
+			if(title==null) {
+				//원본 파일명을 제목으로 설정
+				title=orgFileName;
+			}
 			dto.setTitle(title);
 			//musicion 
 			String artist = tag.getFirst(FieldKey.ARTIST);
+			//만일 아티스트 정보가 없으면
+			if(artist == null) {
+				artist="정보없음";
+			}
 			dto.setArtist(artist);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -85,6 +95,12 @@ public class MusicServiceImpl implements MusicService{
 		List<MusicDto> list=dao.getList(id);
 		//ModelAndView 객체에 담기
 		mView.addObject("list", list);
+	}
+
+	@Override
+	public MusicDto getDetail(int num) {
+		
+		return dao.getData(num);
 	}
 
 }

@@ -13,6 +13,11 @@
 		WHERE writer = #{id}
 		ORDER BY num DESC
 	</select>
+	<select id="getData" parameterType="int" resultType="musicDto">
+		SELECT num, writer, title, artist, orgFileName, saveFileName, regdate
+		FROM board_music
+		WHERE num=#{num}
+	</select>
 </mapper>
 
 
