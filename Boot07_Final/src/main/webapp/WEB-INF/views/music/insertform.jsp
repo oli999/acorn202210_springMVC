@@ -14,7 +14,7 @@
 		<form action="insert" method="post" enctype="multipart/form-data">
 			<div>
 				<label for="file">mp3 파일</label>
-				<input type="file" name="file" id="file"/>
+				<input type="file" name="file" id="file" accept=".mp3"/>
 			</div>
 			<button type="submit">업로드</button>
 		</form>

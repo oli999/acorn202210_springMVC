@@ -1,17 +1,19 @@
 package com.gura.boot07.music.service;
 
 import java.io.File;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
-import org.jaudiotagger.tag.id3.AbstractID3Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gura.boot07.music.dao.MusicDao;
 import com.gura.boot07.music.dto.MusicDto;
@@ -73,6 +75,16 @@ public class MusicServiceImpl implements MusicService{
 		//DB 에 저장 
 		dao.insert(dto);
 		
+	}
+
+	@Override
+	public void getList(ModelAndView mView, HttpSession session) {
+		//로그인된 아이디
+		String id=(String)session.getAttribute("id");
+		//아이디를 이용해서 로그인된 클라이언트가 업로드한 음악 파일 목록만 얻어낸다.
+		List<MusicDto> list=dao.getList(id);
+		//ModelAndView 객체에 담기
+		mView.addObject("list", list);
 	}
 
 }

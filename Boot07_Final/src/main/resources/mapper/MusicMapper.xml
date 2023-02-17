@@ -7,9 +7,10 @@
 		VALUES(board_music_seq.NEXTVAL, #{writer}, #{title}, #{artist}, 
 			#{orgFileName}, #{saveFileName}, SYSDATE)
 	</insert>
-	<select id="getList" resultType="musicDto">
+	<select id="getList" parameterType="java.lang.String" resultType="musicDto">
 		SELECT num, writer, title, artist, orgFileName, saveFileName, regdate
 		FROM board_music
+		WHERE writer = #{id}
 		ORDER BY num DESC
 	</select>
 </mapper>
