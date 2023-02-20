@@ -12,4 +12,5 @@ public interface MusicService {
 	public void saveFile(MultipartFile file, HttpServletRequest request);
 	public void getList(ModelAndView mView, HttpSession session);
 	public MusicDto getDetail(int num);
+	public void deleteFile(int num, HttpServletRequest request);
 }

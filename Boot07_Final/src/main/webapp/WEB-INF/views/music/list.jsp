@@ -21,6 +21,7 @@
 					<th>아티스트</th>
 					<th>파일명</th>
 					<th>업로드일자</th>
+					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -31,6 +32,9 @@
 						<td>${tmp.artist }</td>
 						<td><a href="javascript:loadMusic(${tmp.num })">${tmp.orgFileName }</a></td>
 						<td>${tmp.regdate }</td>
+						<td>
+							<a href="delete?num=${tmp.num}">삭제</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

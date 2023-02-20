@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -49,9 +50,17 @@ public class MusicController {
 	 */
 	@RequestMapping("/music/detail")
 	@ResponseBody
-	public MusicDto detail(int num) {
+	public MusicDto checkDetail(int num, HttpServletRequest request) {
 		
 		return service.getDetail(num);
+	}
+	
+	@GetMapping("/music/delete")
+	public String checkDelete(int num, HttpServletRequest request) {
+		
+		service.deleteFile(num, request);
+		
+		return "redirect:/music/list";
 	}
 	
 }

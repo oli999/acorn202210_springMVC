@@ -18,6 +18,10 @@
 		FROM board_music
 		WHERE num=#{num}
 	</select>
+	<delete id="delete" parameterType="int">
+		DELETE FROM board_music
+		WHERE num=#{num}
+	</delete>
 </mapper>
 
 
