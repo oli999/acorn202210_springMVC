@@ -24,7 +24,8 @@ public class WebConfig implements WebMvcConfigurer{
 		.excludePathPatterns("/users/signup_form", "/users/signup", "/users/loginform", "/users/login",
 				"/gallery/list", "/gallery/detail",
 				"/cafe/list","/cafe/detail","/cafe/ajax_comment_list",
-				"/file/list","/file/download");
+				"/file/list","/file/download",
+				"/music/login");
 		
 		//모바일 요청에 대해 개입할 인터셉터 등록
 		registry.addInterceptor(mLoginInterceptor)
