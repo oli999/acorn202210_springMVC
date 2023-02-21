@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gura.boot07.music.dao.MusicDao;
 import com.gura.boot07.music.dto.MusicDto;
 import com.gura.boot07.music.service.MusicService;
 import com.gura.boot07.users.dao.UsersDao;
@@ -26,6 +27,7 @@ public class MusicController {
 	
 	@Autowired MusicService service;
 	@Autowired UsersDao usersDao;
+	@Autowired MusicDao musicDao;
 	
 	@RequestMapping("/music/login")
 	@ResponseBody
@@ -96,8 +98,12 @@ public class MusicController {
 	@RequestMapping("/api/music/list")
 	@ResponseBody
 	public List<MusicDto> list2(HttpSession session){
-		
-		return null;
+		//로그인된 아이디를 읽어온다
+		String id=(String)session.getAttribute("id");
+		//해당 사용자가 업로드한 음악 파일 목록을 읽어와서
+		List<MusicDto> list=musicDao.getList(id);
+		//ResponseBody 로 응답한다(json 문자열 응답)
+		return list;
 	}
 	
 	

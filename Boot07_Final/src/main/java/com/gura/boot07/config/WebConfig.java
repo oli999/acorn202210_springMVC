@@ -29,7 +29,8 @@ public class WebConfig implements WebMvcConfigurer{
 		
 		//모바일 요청에 대해 개입할 인터셉터 등록
 		registry.addInterceptor(mLoginInterceptor)
-		.addPathPatterns("/api/gallery/*");
+		.addPathPatterns("/api/gallery/*", "/api/music/*");
+		
 		
 	}
 	// resources 폴더안에 있는 자원을 spring 컨트롤러를 거치지 않고 응답되도록 설정
