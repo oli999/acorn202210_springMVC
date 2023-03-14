@@ -25,11 +25,12 @@ public class WebConfig implements WebMvcConfigurer{
 				"/gallery/list", "/gallery/detail",
 				"/cafe/list","/cafe/detail","/cafe/ajax_comment_list",
 				"/file/list","/file/download",
-				"/music/login");
+				"/music/login","/music/logincheck");
 		
 		//모바일 요청에 대해 개입할 인터셉터 등록
 		registry.addInterceptor(mLoginInterceptor)
-		.addPathPatterns("/api/gallery/*", "/api/music/*");
+		.addPathPatterns("/api/gallery/*", "/api/music/*", "/api/gallery/insert")
+		.excludePathPatterns("/api/gallery/list");
 		
 		
 	}

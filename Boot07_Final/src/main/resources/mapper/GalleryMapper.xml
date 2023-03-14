@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="gallery">
+	<select id="getListAll" resultType="galleryDto">
+		SELECT num, writer, caption, imagePath, regdate
+		FROM board_gallery
+		ORDER BY num DESC
+	</select>
 	<select id="getList" parameterType="galleryDto" resultType="galleryDto">
 		SELECT *
 		FROM	

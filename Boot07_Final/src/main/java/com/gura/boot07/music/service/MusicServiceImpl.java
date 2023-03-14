@@ -2,6 +2,7 @@ package com.gura.boot07.music.service;
 
 import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,8 +51,13 @@ public class MusicServiceImpl implements MusicService{
 			//만약 디렉토리가 존재하지X
 			upload.mkdir();//폴더 생성
 		}
+		
 		//저장할 파일의 이름을 구성한다. -> 우리가 직접 구성해줘야한다.
-		String saveFileName = System.currentTimeMillis() + orgFileName;
+		//String saveFileName = System.currentTimeMillis() + orgFileName;
+		
+		//파일명이 겹치지 않도록 무작위의 UUID 문자열을 얻어내서 저장할 파일명으로 사용한다. 
+		String randomId=UUID.randomUUID().toString();
+		String saveFileName = randomId+".mp3";  
 		
 		dto.setSaveFileName(saveFileName);
 		
