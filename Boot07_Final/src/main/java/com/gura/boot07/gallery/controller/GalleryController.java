@@ -115,17 +115,25 @@ public class GalleryController {
 	@ResponseBody
 	public List<GalleryDto> apiList(HttpSession session, HttpServletResponse response, 
 			HttpServletRequest request){
-		System.out.println(session.getId());
-		
-		Cookie[] cooks=request.getCookies();
-		for(Cookie tmp : cooks) {
-			System.out.println(tmp.getName()+":"+tmp.getValue());
-		}
-		
-		Cookie cook1=new Cookie("name", "kimgura");
-		response.addCookie(cook1);
 		
 		return dao.getListAll();
+	}
+	
+	@GetMapping("/gura/test")
+	public String test() {
+		
+		return "redirect:/api/gallery/list";
+	}
+	
+	
+	@PostMapping("/api/gallery/delete")
+	@ResponseBody
+	public Map<String, Object> apiDelete(HttpServletRequest request, int num){
+		service.deleteGallery(request, num);
+		
+		Map<String, Object> map=new HashMap<>();
+		map.put("isSuccess", true);
+		return map;
 	}
 }
 

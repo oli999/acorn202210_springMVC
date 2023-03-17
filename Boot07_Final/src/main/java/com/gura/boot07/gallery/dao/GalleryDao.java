@@ -16,4 +16,6 @@ public interface GalleryDao {
 	public GalleryDto getData(int num);
 	//모든 gallery 리스트 가져오기
 	public List<GalleryDto> getListAll();
+	//겔러리 사진 정보 삭제
+	public void delete(int num);
 }

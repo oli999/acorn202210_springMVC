@@ -21,4 +21,17 @@ public interface GalleryService {
 	public void insert(GalleryDto dto, HttpServletRequest request);
 	//갤러리 detail 페이지에 필요한 data를 ModelAndView 에 저장
 	public void getDetail(ModelAndView mView, int num);
+	//겔러리 사진 삭제 및 DB 에서도 삭제하기
+	public void deleteGallery(HttpServletRequest request, int num);
 }
+
+
+
+
+
+
+
+
+
+
+

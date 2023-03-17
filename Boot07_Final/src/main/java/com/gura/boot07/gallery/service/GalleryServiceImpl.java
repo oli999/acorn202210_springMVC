@@ -177,4 +177,32 @@ public class GalleryServiceImpl implements GalleryService {
 		//ModelAndView 에 가져온 GalleryDto 를 담는다.
 		mView.addObject("dto", dto);
 	}
+
+	@Override
+	public void deleteGallery(HttpServletRequest request, int num) {
+		//삭제할 Gallery 사진 정보를 읽어와서 
+		GalleryDto dto=dao.getData(num);
+		//DB 에서 삭제
+		dao.delete(num);
+		// webapp 폴더까지의 실제 경로 
+		String realPath = request.getServletContext().getRealPath("/");
+		// webapp 폴더까지의 실제 경로 +  /resources/upload/xxx.jpg 
+		String imagePath = realPath+dto.getImagePath();
+		//삭제할 File 객체 생성
+		File file=new File(imagePath);
+		//파일 삭제
+		file.delete();
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
